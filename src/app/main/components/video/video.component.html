@@ -1,0 +1,54 @@
+<div class="video-editor">
+    <div class="columns main">
+      <div class="column is-3 leftSide">
+          <div class="video-section">
+            <video [src]="videopath" id="myvideo" loop="" autostart="0"
+              preload="false" style="object-fit: contain;">
+            </video>
+            <div class="subtitles-text-container"  [hidden]="currentTime < item.range[0] || currentTime > item.range[1]" *ngFor="let i = index; let item of editItems">
+              <span>{{item.title}}</span>
+            </div>
+          </div>
+      </div>
+      <div class="column is-9 rightSide">
+          <div class="column buttons">
+              <h3>Add Subtitles to your video</h3>
+              <a *ngIf="!playflag" class="button is-danger is-active play" (click)="play()">
+                  <svg _ngcontent-c2="" fill="currentColor" height="2em" stroke="currentColor" stroke-width="0" style="vertical-align: middle;" viewBox="0 3 24 24" width="3em"><path _ngcontent-c2="" d="M8 5v14l11-7z"></path></svg>
+              </a>
+              <a *ngIf="playflag" class="button is-danger is-active play" (click)="stop()">
+                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 3 24 24" height="2em" width="2em" style="vertical-align: middle;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+              </a>
+              <a class="button assist" (click)="restart()">
+                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 1 24 24" height="1em" width="1em" style="vertical-align: middle;"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"></path></svg>
+              </a>
+              <a class="button assist" (click)="back()">
+                  -1s
+              </a>
+              <a class="button assist" (click)="forward()">
+                  +1s
+              </a>
+              <span>{{currentTime}} / {{videoDuration}}</span>
+          </div>
+          <div class="column progress-bar">
+              <mat-slider (change)="onChange()" [(ngModel)]="currentTime" max="{{videoDuration}}"></mat-slider>
+          </div>
+          <div class="column edit-subtitle">
+            <div class="subtitle-item" *ngFor="let i = index; let item of editItems">
+              <div class="columns">
+                <div class="column is-10">
+                  <input class="input" type="text" [disabled]="item.title.length==30" [(ngModel)]="item.title" placeholder="click here to edit subtitle">
+                </div>
+                <div class="column is-2">
+                  <i class="material-icons" (click)="remove(i)">delete_forever</i>
+                </div>
+              </div>
+              <nouislider #slider [min]="0" [max]="5.28" [step]="0.01"  [(ngModel)]="item.range" (update)="changeRange(i, $event)"></nouislider>
+            </div>
+          </div>
+          <div class="column add-another">
+              <a class="button is-success" (click)="add()">Add Another Subtitle</a>
+          </div>
+      </div>
+    </div>
+</div>

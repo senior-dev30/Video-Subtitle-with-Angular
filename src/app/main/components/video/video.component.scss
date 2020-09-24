@@ -1,0 +1,112 @@
+.video-editor {
+  height: 100%;
+  .main {
+    height: 100%;
+    .leftSide {
+      background: #424650;
+      .video-section {
+        padding: 10px;
+        .subtitles-text-container {
+          position: absolute;
+          background: none;
+          margin-top: -40px;
+          width: 24%;
+          text-align: center;
+          padding: 10px;
+          span {
+            width: 100%;
+            color: white;
+            font-size: 18px;
+            line-height: 22px;
+            font-family: Arial;
+            font-size: 18px;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+    .rightSide {
+      .buttons {
+          h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: rgb(34, 44, 59);
+            padding-bottom: 16px;
+          }
+          .play {
+            width: 80px;
+            display: inline-block;
+            font-weight: 600;
+            transition: .2s;
+          }
+          .assist {
+            width: 50px;
+            display: inline-block;
+            font-weight: 300;
+            transition: .2s;
+            background: rgb(152,152,152);
+            color: #fff;
+          }
+      }
+      mat-slider {
+        width: 100%;
+        cursor: pointer;
+      }
+      .edit-subtitle {
+        .subtitle-item {
+          margin-top: 64px;
+          i {
+            cursor: pointer;
+          }
+          double-slider {
+            width: 100%;
+          }
+        }
+      }
+      .add-another {
+        display: flex;
+        .button {
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+.progress-bar {
+  .mat-slider-thumb {
+    display: none;
+  }
+}
+.noUi-target {
+  background: #ff1e4b;
+  border-radius: 10px;
+  width: 98%;
+  border: 5px solid #ffffff;
+}
+.noUi-horizontal .noUi-handle {
+  width: 23px;
+  height: 23px;
+  left: 0px;
+  top: -8px;
+}
+.noUi-handle {
+  border: 1px solid #D9D9D9;
+  border-radius: 14px;
+  background: #699df2;
+  cursor: pointer;
+}
+.noUi-handle:after, .noUi-handle:before{
+  display: none;
+}
+.noUi-base {
+  background: #113a7b;
+}
+.noUi-base .noUi-origin{
+  background: #ff1e4b;
+}
+.noUi-base .noUi-origin:last-child{
+  background: #113a7b !important;
+}
+.noUi-origin {
+  background: red;
+}
